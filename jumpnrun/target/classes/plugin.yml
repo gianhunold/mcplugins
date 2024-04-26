@@ -1,0 +1,8 @@
+name: jumpnrun
+version: '0.0.1'
+main: org.gian.jumpnrun.Jumpnrun
+api-version: '1.20'
+commands:
+  jumpnrun:
+    description: "Teleport to the Jump and Run Map"
+    usage: "/jumpnrun [easy|medium|hard]"
