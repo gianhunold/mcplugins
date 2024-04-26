@@ -1,0 +1,6 @@
+name: knockback
+version: '0.0.1'
+main: org.gian.knockback.Knockback
+api-version: '1.20'
+commands:
+  knockback:
