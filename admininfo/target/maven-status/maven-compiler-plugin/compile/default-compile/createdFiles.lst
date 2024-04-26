@@ -1,0 +1,3 @@
+org\gian\admininfo\Admininfo.class
+org\gian\admininfo\admininfo\commands\worldlist.class
+org\gian\admininfo\admininfo\commands\uptime.class

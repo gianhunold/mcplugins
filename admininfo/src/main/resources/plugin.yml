@@ -1,0 +1,7 @@
+name: admininfo
+version: '${project.version}'
+main: org.gian.admininfo.Admininfo
+api-version: '1.20'
+commands:
+  worldlist:
+  uptime:
