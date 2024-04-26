@@ -1,0 +1,9 @@
+name: survival
+version: '0.0.1'
+main: org.gian.survival.Survival
+api-version: '1.20'
+commands:
+  survival:
+  feed:
+  heal:
+  levelrepair:
