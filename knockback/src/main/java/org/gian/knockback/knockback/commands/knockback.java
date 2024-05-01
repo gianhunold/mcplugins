@@ -24,7 +24,9 @@ public class knockback implements CommandExecutor {
         player.setHealth(20);
         player.setFoodLevel(20);
 
+        player.getInventory().setHeldItemSlot(0);
         player.getInventory().setItemInMainHand(new ItemStack(Material.STICK,1));
+
         ItemStack currentitem = player.getInventory().getItemInMainHand();
         ItemMeta meta = currentitem.getItemMeta();
         meta.addEnchant(Enchantment.KNOCKBACK, 7, true);
