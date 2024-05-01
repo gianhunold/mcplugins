@@ -11,6 +11,10 @@ public final class Knockback extends JavaPlugin {
 
     public static String knockbackitem;
     public static int enchantlevel;
+    public static String knockbackmap;
+    public static long knockbackmap_x;
+    public static int knockbackmap_y;
+    public static long knockbackmap_z;
 
     @Override
     public void onEnable() {
@@ -20,19 +24,28 @@ public final class Knockback extends JavaPlugin {
             getDataFolder().mkdir();
             //creating main plugin directory if not exists
             getLogger().info("Creating config file for: " + getDataFolder());
-            this.getConfig().set("Knockback Item", "STICK");
-            this.getConfig().set("Knockback Strenght", 7);
+            this.getConfig().set("knockback-item", "STICK");
+            this.getConfig().set("knockback-strenght", 7);
+            this.getConfig().set("knockback-map", "knockbackmap");
+            this.getConfig().set("knockback-map-x", 0.5);
+            this.getConfig().set("knockback-map-y", 101);
+            this.getConfig().set("knockback-map-z", 0.5);
             this.saveConfig();
             // then saving the config
         }
 
-        knockbackitem = this.getConfig().getString("Knockback Item");
-        enchantlevel = this.getConfig().getInt("Knockback Strenght");
+        knockbackitem = this.getConfig().getString("knockback-item");
+        enchantlevel = this.getConfig().getInt("knockback-strenght");
+        knockbackmap = this.getConfig().getString("knockback-map");
+
+        knockbackmap_x = this.getConfig().getLong("knockback-map-x");
+        knockbackmap_y = this.getConfig().getInt("knockback-map-y");
+        knockbackmap_z = this.getConfig().getLong("knockback-map-z");
 
         // Plugin startup logic
 
         //Generate Worlds
-        WorldCreator wc = new WorldCreator("knockbackmap");
+        WorldCreator wc = new WorldCreator(knockbackmap);
         wc.environment(World.Environment.NORMAL);
         wc.type(WorldType.FLAT);
         wc.createWorld();

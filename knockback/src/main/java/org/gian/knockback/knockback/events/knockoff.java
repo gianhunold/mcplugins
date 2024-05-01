@@ -10,6 +10,7 @@ import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerItemDamageEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.gian.knockback.Knockback;
 
 import static org.bukkit.Bukkit.getServer;
 
@@ -17,7 +18,7 @@ public class knockoff implements Listener {
     @EventHandler
     public void onHungerDeplete (FoodLevelChangeEvent event) {
         String w = event.getEntity().getWorld().getName();
-        if (w.equals("knockbackmap")) {
+        if (w.equals(Knockback.knockbackmap)) {
             event.setCancelled(true);
             HumanEntity player = event.getEntity();
             player.setFoodLevel(20);
@@ -26,7 +27,7 @@ public class knockoff implements Listener {
     @EventHandler
     public  void onHealtDeplete (PlayerItemDamageEvent event) {
         String w = event.getPlayer().getWorld().getName();
-        if (w.equals("knockbackmap")) {
+        if (w.equals(Knockback.knockbackmap)) {
             event.setCancelled(true);
             HumanEntity player = event.getPlayer();
             player.setHealth(20);
@@ -35,19 +36,19 @@ public class knockoff implements Listener {
     @EventHandler
     public  void onPlayerDropItem (PlayerDropItemEvent event) {
         String w = event.getPlayer().getWorld().getName();
-        if (w.equals("knockbackmap")) {
+        if (w.equals(Knockback.knockbackmap)) {
             event.setCancelled(true);
         }
     }
     @EventHandler
     public  void onDropOffPlatform (PlayerMoveEvent event) {
         String w = event.getPlayer().getWorld().getName();
-        if (w.equals("knockbackmap")) {
+        if (w.equals(Knockback.knockbackmap)) {
             Location tolocation = event.getTo();
             int newY = tolocation.getBlockY();
-            if (newY <= 80) {
+            if (newY <= Knockback.knockbackmap_y-20) {
                 Player player = event.getPlayer();
-                Location knockbackmid = new Location(getServer().getWorld("knockbackmap"), 0.5,101,0.5);
+                Location knockbackmid = new Location(getServer().getWorld(Knockback.knockbackmap), Knockback.knockbackmap_x,Knockback.knockbackmap_y,Knockback.knockbackmap_z);
                 player.teleport(knockbackmid);
                 player.setHealth(20);
             }
@@ -56,7 +57,7 @@ public class knockoff implements Listener {
     @EventHandler
     public void onFallDamage (EntityDamageEvent event) {
         String w = event.getEntity().getWorld().getName();
-        if (w.equals("knockbackmap")) {
+        if (w.equals(Knockback.knockbackmap)) {
             if (event.getCause() == EntityDamageEvent.DamageCause.FALL) {
                 event.setCancelled(true);
             }

@@ -24,7 +24,7 @@ public class knockback implements CommandExecutor {
 
 
         Player player = (Player) commandSender;
-        Location knockbackmid = new Location(getServer().getWorld("knockbackmap"), 0.5,101,0.5);
+        Location knockbackmid = new Location(getServer().getWorld(Knockback.knockbackmap), Knockback.knockbackmap_x,Knockback.knockbackmap_y,Knockback.knockbackmap_z);
 
         player.getInventory().clear();
         player.teleport(knockbackmid);
